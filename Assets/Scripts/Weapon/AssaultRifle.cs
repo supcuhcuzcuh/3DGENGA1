@@ -2,18 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AssaultRifle : BaseWeapon
+public class AssaultRifle : BaseWeapon, ISmallProjectile
 {
-    [SerializeField] private int maxAmmo;
-    [SerializeField] private float firingRate;
+    [SerializeField] private GameObject proj;
+    private float _projSpeed;
 
     private void Start()
     {
-        SetUp(maxAmmo, firingRate);
+        _projSpeed = proj.GetComponent<Projectile>().projectileSpeed;
+        Cursor.lockState = CursorLockMode.Locked;
     }
-    public override void SetUp(int maxAmmo, float firingRate)
+    public void Shoot(GameObject proj, float projSpeed)
     {
-        this.maxAmmo = maxAmmo;
-        this.firingRate = firingRate;
+        GameObject go = Instantiate(proj , firePoint.transform);
+        Rigidbody rb = go.GetComponent<Rigidbody>();
+        rb.AddForce(firePoint.forward, ForceMode.Impulse);
+        
+    }
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {   
+            Shoot(proj, _projSpeed);
+        }
     }
 }

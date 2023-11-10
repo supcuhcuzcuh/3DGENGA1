@@ -74,6 +74,9 @@
     <Compile Include="Assets\Scripts\Weapon\MountedMachine.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCrouch.cs" />
     <Compile Include="Assets\Scripts\Weapon\AssaultRifle.cs" />
+    <Compile Include="Assets\Scripts\Shooting\Projectile.cs" />
+    <Compile Include="Assets\Scripts\Shooting\ARProjectile.cs" />
+    <Compile Include="Assets\Scripts\Shooting\ISmallProjectile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
