@@ -5,5 +5,7 @@ using UnityEngine;
 public abstract class BaseWeapon : MonoBehaviour
 {
     [SerializeField] protected Transform firePoint;
+    [SerializeField] protected GameObject proj;
     [SerializeField] protected int maxAmmo;
 }
+

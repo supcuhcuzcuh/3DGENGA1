@@ -4,26 +4,18 @@ using UnityEngine;
 
 public class AssaultRifle : BaseWeapon, ISmallProjectile
 {
-    [SerializeField] private GameObject proj;
-    private float _projSpeed;
-
-    private void Start()
+   // [SerializeField] private GameObject proj;
+    public void Shoot(GameObject proj, float projSpeed) // implemented interface 
     {
-        _projSpeed = proj.GetComponent<Projectile>().projectileSpeed;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-    public void Shoot(GameObject proj, float projSpeed)
-    {
-        GameObject go = Instantiate(proj , firePoint.transform);
+        GameObject go = Instantiate(proj, firePoint.transform.position, Quaternion.identity); 
         Rigidbody rb = go.GetComponent<Rigidbody>();
-        rb.AddForce(firePoint.forward, ForceMode.Impulse);
-        
+        rb.AddForce(firePoint.forward * proj.GetComponent<Projectile>().projectileSpeed, ForceMode.Impulse);
     }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {   
-            Shoot(proj, _projSpeed);
+            Shoot(proj, proj.GetComponent<Projectile>().projectileSpeed);
         }
     }
 }
