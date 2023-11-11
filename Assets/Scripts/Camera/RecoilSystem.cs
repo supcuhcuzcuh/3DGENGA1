@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class RecoilSystem : MonoBehaviour
 {
     // Rotations
